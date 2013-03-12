@@ -1,0 +1,17 @@
+title: Import a CSV File into SQL Server
+
+Metrics aggregation and reporting have always seemed to be a part of every job I’ve had. Over the years I’ve developed a system that allows me to slice and dice just about anything using Excel, SQL and a little bit of code. I used to rely heavily on the Data Transformation Services in SQL 2000 Enterprise Console, and haven’t really found a good replacement (read: free replacement) until today. I just came across this little snippet of SQL that does the trick very well, here’s what you do:
+
+##Create a new table in your database
+
+Create a new table in your database, making sure each column data type is compatible with the corresponding column in your CSV file.
+
+##Properly format your input CSV file
+
+What every data you want to suck in should be in a standard [CSV file format](http://en.wikipedia.org/wiki/Comma-separated_values) as such. Save the file in a conspicuous location like c:\.
+
+##Run this script
+
+Finally, execute the following script on your SQL Server. It should locate the CSV file, and import all the rows. Note, if it encounters an error on any single row, it will simply exclude that row in the resulting table. That could be a bit of a problem if you’ve got a lot of data.
+
+This script seems to work in SQL Server 2005 and 2008. For more information, check out MSDN’s reference material, there seem to be a lot more bells and whistles than I’m using here in this simple example. [http://msdn.microsoft.com/en-us/library/ms188365.aspx](http://msdn.microsoft.com/en-us/library/ms188365.aspx)

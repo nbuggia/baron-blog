@@ -1,0 +1,17 @@
+###
+# Redirect Config File
+#
+# Use this file to list all of the redirections you'd like the blog to process
+# using the same file-format as Apache.
+#
+# http://support.google.com/webmasters/bin/answer.py?hl=en&answer=40132
+
+###
+# Handles de-duping of pagination with root (keep this!)
+Redirect 301 /page/1 /
+Redirect 301 /page/1/ /
+
+###
+# Add your redirects here
+Redirect 301 /posts/coq-au-vin/ /posts/cooking/coq-au-vin
+

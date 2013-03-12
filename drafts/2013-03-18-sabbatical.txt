@@ -1,0 +1,61 @@
+title: Sabbatical
+
+After a decade at Microsoft I have tendered my resignation.
+
+
+Goals
+
+Achieve these goals through 3 projects that will hopefully lead to my own company.
+
+Technical
+
+* One server-side language/ framework (RoR)
+* Proficient in TDD and related theories
+
+
+Business
+
+* Try to start a company
+
+
+Personal
+
+* Run
+* Climb
+* Work/Life Balance
+
+
+
+It's official...
+
+-------------------------------------------------------
+
+Thanks Sally – I’m really going to miss everyone here. Don’t be surprised if I show up in Tully’s with some cookies just to make sure Keith’s heart is still ticking, to see Tracey’s water color paintings, or to see Robb’s latest crazy youtube video. My last couple years at Microsoft have been the best by far. But, I have been here for 11 ½ years, after two internships, directly out of college. It is time for me to try something different. I’m just lucky to have had such a great team that doesn’t need me anymore
+
+I’ve been here for 33% of my life and at this point Microsoft is family. I look forward to hearing about your future success, and I will always tell people how awesome the Bing team. Hopefully a lot of those people will be in Spain ;)
+
+nate
+
+nbuggia@gmail.com
+508-472-5667
+facebook.com/buggia
+linkedin.com/in/nbuggia
+
+
+From: Sally Salas
+Sent: Tuesday, March 5, 2013 4:52 PM
+To: Bing Experiences - FTE ALL; Nathan Buggia
+Subject: Update on Core UX PM Org
+
+I want to take a moment to formalize the announcement of Nate’s departure from Microsoft. I’ve worked with Nate for the past 5 years and I can’t imagine not having him around. He keeps us all customer focused and has a great sense of humor which I appreciate. He has developed strong leadership on his team and he strives to improve and hire the very best PM’s. He is passionate about people, culture and product but unfortunately he is also passionate about doing a startup and trying something new so our journey together is ending for now but not forever as I’m sure our paths will cross again. Thank you Nate for all your contributions to Bing and to our team. You will be missed.
+
+Nate’s final date will be 3/18. In advance of his departure I’d like to make the following changes on the core UX PM team effective today:
+• Tracey Yao will move to report to me and lead up whole page and algo block. Her team will remain the same.
+• Troy Ma will move to report to me and lead visual system and scaleout. His team will remain the same.
+• Olivier Dabrowski (Radek) will move to report to Mujtaba working on experimentation & agility
+• Tim McKee (part of an earlier announce) has joined Mujtaba’s team on platform & agility
+
+Please let me know if you have any questions.
+
+Thanks,
+Sally

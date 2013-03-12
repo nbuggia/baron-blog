@@ -1,0 +1,27 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    builder (3.1.4)
+    rack (1.5.0)
+    rdiscount (1.6.8)
+<<<<<<< HEAD
+    baron (1.0.0)
+=======
+    toto (0.4.9)
+>>>>>>> b40ccab1a167fe8866d90bcfb79961470dbc407e
+      builder
+      rack
+      rdiscount
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  builder
+  rack
+  rdiscount
+<<<<<<< HEAD
+  baron
+=======
+  toto
+>>>>>>> b40ccab1a167fe8866d90bcfb79961470dbc407e
