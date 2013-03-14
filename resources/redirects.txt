@@ -13,5 +13,4 @@ Redirect 301 /page/1/ /
 
 ###
 # Add your redirects here
-Redirect 301 /posts/coq-au-vin/ /posts/cooking/coq-au-vin
 

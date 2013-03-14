@@ -3,7 +3,10 @@ h1, h2, h3 {font-family:"museo-sans", sans-serif; padding-top:0; margin-top:0;}
 h1 {font-size:2.6em; line-height:1.3em; color:#444; text-align:center; }
 h2 {color: #444; font-size: 1.4em;}
 h3 {text-transform: uppercase; font-size:0.9em;}	
-h4 {text-transform: uppercase; font-size:0.76em;}	
+h4 {text-transform: uppercase; font-size:0.76em;}
+
+.small {font-size:0.8em;}
+.center {text-align: center;}
 
 
 a:link, a:hover, a:visited, a:active {color:#069;}
@@ -41,6 +44,7 @@ div.content-strip {max-width: 38em; margin: 0 auto;}
 #articles .article-title {float: left;}
 #articles time {float:right; color:#999; text-transform:uppercase; font-size:0.8em; vertical-align:baseline;}
 #articles span {color:#ccc; font-size:0.5em; text-transform:uppercase;}
+/*#articles a {overflow:hidden; text-overflow:ellipsis; white-space:nowrap; width:22em;}*/
 
 #pagination {padding-top:1em;}
 
@@ -51,4 +55,4 @@ div.content-strip {max-width: 38em; margin: 0 auto;}
 
 article li {line-height:1.3em; padding-top:0.3em; padding-bottom:0.3em;}
 article p {padding:0.5em 0 0.5em 0;}
-
+article table, article th, article td {border: 1px solid #444;}
