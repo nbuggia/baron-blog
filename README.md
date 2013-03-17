@@ -21,46 +21,95 @@ web master tools
 
 ##Quick Start
 
+Dependencies: <a href="http://git-scm.com/">git</a>, 
+<a href="https://devcenter.heroku.com/articles/quickstart">heroku</a>, 
+<a href="http://www.ruby-lang.org/en/downloads/">ruby</a>
+
 1. Download
 
-	> git clone https://github.com/nbuggia/baron-blog.git
-	> mv baron-blog my-blog
+	$ git clone https://github.com/nbuggia/baron-blog.git
+	$ mv baron-blog my-blog
 
 2. Create your blog on Heroku
 
-	> heroku create my-blog
-	> TODO: heroku add local...????
+	$ heroku create my-blog
+	$ TODO: heroku add local...????
 
 3. Create a Git Repository
 
-	> git init
-	> git add .
-	> git commit -m 'First commit of my new blog!'
-	> git push heroku master
+	$ git init
+	$ git add .
+	$ git commit -m 'First commit of my new blog!'
 
-4. Open!
+4. Publish!
 
-	> heroku open
+	$ git push heroku master
+	$ heroku open
 
-The next section provides detailed instructions for everything else you might 
-want to do with your blog.
+Yay! Now you probably are going to want to customize this thing, read on for 
+all the bells and whistles.
 
 ##Quick How To's
 
-###Deploy to Heroku
+###Customize Your Blog
 
-create the app
-push to heroku
-associate a domain name
-redirect the nude to the www
-keep the dynamo spun up
+	$ less config.ru
 
-###Author New Post
+There are many bells and whistles available for your blog, most of them can be 
+set from inside <code>config.ru</code>. The file is well documented for all the 
+options.
 
-use markdown, text or HTML
-prepend the file with the date for easy sorting
-use the filename
-use attributes in the file
+The other big customization route is to hack the theme to either make your own,
+or to just modify it the way you'd like. Check out the 
+**Creating Your Own Themes*** section for more information.
+
+###Adding a Custom Domain Name (with Heroku)
+
+Go to the config section of your blog app and then enter in one or more new
+domain names. Next step is to redirect your DNS server to to heroku
+
+**GoDaddy**
+
+
+**FOOBAR**
+
+
+If you have a different hoster, just ask google how to set it up.
+
+Finally, you'll want to redirect the nude domain name to www, like this:
+
+my-domain.com &rarr; www.my-domain.com
+
+###Create New Post
+
+	$ rake new
+	Title: My Blog Title
+
+This command creates a new blog post with the current date in your 
+<code>drafts/</code> folder.
+
+To create a new post, you simply create a new text file in your favorite 
+editor. Simply save the file somewhere in your <code>articles/</code> folder in
+the format of <code>YYYY-MM-DD-article-title.txt</code>. Where YYYY means the
+year in 4 digits, MM means the month in two digits and DD means the day of the 
+month in 2 digits.
+
+**Attributes**
+
+The first few lines of the file are where you can place attribute value
+pairs in YAML format (e.g. <code>my_attribute: 'attribute'</code>). Add two new 
+lines to start the article, and then you can write it using markdown, HTML, 
+plain text, or a combination of all 3.
+
+* You can add additional attributes you want and then access them in the rhtml 
+template with <code>@article[:my_attribute]</code>.
+* If you need to use ':' or other special characters in your value, wrap it in 
+quotes (e.g. <code>title: "My article: Lots & Lots of Smiles"</code>)
+
+Notes
+
+* Baron forces all folder names and file names to lower case for canonicalization
+* You can't have periods in the file name
 
 ###Create A New Custom Page
 
@@ -100,16 +149,9 @@ Project structure:
 
 ###Create a New Article
 
-TODO
-
-* You can't have periods in the file name
-* If you want a colon in your title, then you need to wrap the title in quotes ""
-
-	$ rake new
-	Title: My New Blog Entry
-	$ vim articles/2013-01-01-my-new-blog-entry
 
 ###Create a New Page
+
 
 ###Add a Custom Domain Name in Heroku (free!)
 

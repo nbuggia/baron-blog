@@ -36,7 +36,8 @@ baron = Baron::Server.new do
   set :theme, 'typography'
 
   # Specify how and if you would like the article date to be included in your 
-  # permalink URL. Options: :year_date, :year_month_date, :year_month_day_date, :no_date 
+  # permalink URL. 
+  # Options: :year_date, :year_month_date, :year_month_day_date, :no_date 
   set :permalink_date_format, :year_month_day_date
   
   # Specifies the maximum number of articles that will be show on the home page
@@ -49,10 +50,11 @@ baron = Baron::Server.new do
   # specify your google analytics ID (Should be in the format of "UA-XXXXXX-X")
   set :google_analytics, ''
 
-  # specify your google webmaster key (format: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX)
+  # specify your google webmaster key 
+  # format: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
   set :google_webmaster, ''
 
-  # You can add any value here, and then access it from any of the rendering templates
+  # You can add any value here, and then access it from any of the rhtml templates
   #set :foo_bar, 'foobar'
 
 end
@@ -60,7 +62,10 @@ end
 ###
 # Rack configuration
 
+# Rack will allow public access to these folders (and sub folders), though it 
+# will not support directory browsing. Add your own folders.
 use Rack::Static, :urls => ['/themes', '/downloads', '/images']
+
 use Rack::CommonLogger
 
 if ENV['RACK_ENV'] == 'development'
