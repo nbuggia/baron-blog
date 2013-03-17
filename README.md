@@ -25,24 +25,13 @@ Dependencies: <a href="http://git-scm.com/">git</a>,
 <a href="https://devcenter.heroku.com/articles/quickstart">heroku</a>, 
 <a href="http://www.ruby-lang.org/en/downloads/">ruby</a>
 
-1. Download
-
 	$ git clone https://github.com/nbuggia/baron-blog.git
 	$ mv baron-blog my-blog
-
-2. Create your blog on Heroku
-
 	$ heroku create my-blog
 	$ TODO: heroku add local...????
-
-3. Create a Git Repository
-
 	$ git init
 	$ git add .
 	$ git commit -m 'First commit of my new blog!'
-
-4. Publish!
-
 	$ git push heroku master
 	$ heroku open
 
