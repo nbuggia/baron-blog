@@ -12,7 +12,7 @@ baron = Baron::Server.new do
   set :title, 'Robert Frost'
 
   # Specify a description for your blog
-  set :description, ''
+  set :description, 'The fake blog of Robert Frost'
 
   # Path to the image used in the site header
   set :header_image, 'robert-frost.png'
@@ -22,7 +22,7 @@ baron = Baron::Server.new do
   set :author, 'Rob'
 
   # Provide a ruby block function used to render the date
-  # TODO: reference page on ruby date string tokens
+  # http://ruby-doc.org/core-2.0/Time.html#method-i-strftime
   set :date, lambda {|now| now.strftime("#{now.day} %b %Y") }
   
   # Prefix your permalink URL. This is useful for maintaining compatibility
@@ -45,17 +45,21 @@ baron = Baron::Server.new do
 
   # Specify the URL of your blog for creating permalinks (good in case people
   # steal your content, then the links will still point to your articles.)
-  set :url, 'http://www.buggia.org/'
+  # for example: http://nathanbuggia.com
+  set :url, 'http://localhost:3000/'
 
-  # specify your google analytics ID (Should be in the format of "UA-XXXXXX-X")
+  # specify your google analytics ID 
+  # format of "UA-XXXXXX-X"
   set :google_analytics, ''
 
   # specify your google webmaster key 
   # format: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
   set :google_webmaster, ''
 
-  # You can add any value here, and then access it from any of the rhtml templates
-  #set :foo_bar, 'foobar'
+  # You can add any value here like this:
+  # => set :foo_bar, 'foobar'
+  # and then access it from any of the rhtml templates like this:
+  # => <%= @config[:foo_bar] %>
 
 end
  

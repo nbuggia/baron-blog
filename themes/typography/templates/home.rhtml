@@ -15,12 +15,12 @@
 
 <!-- Pagination -->
 <div id="pagination">
-	<div>
+	<div class="left">
 		<% if @params[:page_forward] %>
 		<a href="<%= @params[:page_forward] %>">&larr; Previous articles</a>
 		<% end %>
 	</div>
-	<div style="float:right;">
+	<div class="right">
 		<% if @params[:page_back] %>
 		<a href="<%= @params[:page_back] %>">Newer articles &rarr;</a>
 		<% end %>

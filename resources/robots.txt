@@ -1,3 +1,4 @@
 # Robots.txt
 
-# TODO - link to my robots.txt post
+
+Sitemap: <%= @params[:rss_feed] %>

@@ -1,0 +1,15 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    baron (1.0.4)
+      rack
+    rack (1.5.2)
+    rdiscount (2.0.7.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  baron
+  rack
+  rdiscount

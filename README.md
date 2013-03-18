@@ -17,7 +17,7 @@ date formats
 * SEO optimized with built-in support for Robots.txt, Google Analytics, Google 
 web master tools
 * Easy to customize the look & feel via a common site layout template
-* Frameworks used: Rack, RSpec, Bootstrap, JQuery, Disqus, Thin
+* Frameworks used: Rack, RSpec, Bootstrap, JQuery, HTML5
 
 ##Quick Start
 
@@ -28,10 +28,7 @@ Dependencies: <a href="http://git-scm.com/">git</a>,
 	$ git clone https://github.com/nbuggia/baron-blog.git
 	$ mv baron-blog my-blog
 	$ heroku create my-blog
-	$ TODO: heroku add local...????
-	$ git init
-	$ git add .
-	$ git commit -m 'First commit of my new blog!'
+	$ bundle install
 	$ git push heroku master
 	$ heroku open
 
