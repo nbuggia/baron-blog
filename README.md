@@ -3,17 +3,17 @@
 A full-featured, yet minimalist, blog engine for developers
 
 I know what you're thinking, the world doesn't need another Ruby blog 
-engine. And, okay, you're right, however Baron is a little bit different from
-all the others in that it is a lot more full-featured, and still only a scant 
-400 lines of easy-to-ready code.
+engine. And, okay, you're right, however Baron is a little bit different in 
+that it is more full-featured, and still only a scant 400 lines of 
+easy-to-ready code.
 
 **Features**
 * Publish to heroku (or similar PaaS) using Git
-* Author articles or custom pages in markdown, text or HTML
+* Author articles or custom pages in markdown or HTML
 * Article categories supported by simply putting articles in a folder
 * Many permalink formats are supported, including a custom prefix and several 
 date formats
-* 301 or 302 redirects are support for easy porting from your current blog
+* 301 or 302 redirects are supported for easy porting from your current blog
 * SEO optimized with built-in support for Robots.txt, Google Analytics, Google 
 web master tools
 * Easy to customize the look & feel via a common site layout template
@@ -26,9 +26,8 @@ Dependencies: <a href="http://git-scm.com/">git</a>,
 <a href="http://www.ruby-lang.org/en/downloads/">ruby</a>
 
 	$ git clone https://github.com/nbuggia/baron-blog.git
-	$ mv baron-blog my-blog
+	$ cd baron-blog
 	$ heroku create my-blog
-	$ bundle install
 	$ git push heroku master
 	$ heroku open
 
@@ -42,8 +41,8 @@ all the bells and whistles.
 	$ less config.ru
 
 There are many bells and whistles available for your blog, most of them can be 
-set from inside <code>config.ru</code>. The file is well documented for all the 
-options.
+set from inside <a href="https://github.com/nbuggia/baron-blog/blob/master/config.ru">config.ru</a>. 
+The file is well documented for all the options.
 
 The other big customization route is to hack the theme to either make your own,
 or to just modify it the way you'd like. Check out the 
@@ -51,20 +50,29 @@ or to just modify it the way you'd like. Check out the
 
 ###Adding a Custom Domain Name (with Heroku)
 
-Go to the config section of your blog app and then enter in one or more new
-domain names. Next step is to redirect your DNS server to to heroku
+From the Heroku Dashboard, go to the **Settings** section of the app you 
+created, and enter your domain in the **Domains** section. Always specify a 
+sub-domain (like 'www') in your domain name when using heroku.
 
-**GoDaddy**
+**Update your DNS Provider**
 
+You'll need to update your DNS records from your registrar with Heroku's name 
+servers. Heroku provides instructions here: <a href="https://devcenter.heroku.com/articles/custom-domains">
+https://devcenter.heroku.com/articles/custom-domains</a>
 
-**FOOBAR**
-
-
-If you have a different hoster, just ask google how to set it up.
-
-Finally, you'll want to redirect the nude domain name to www, like this:
+**Map Naked Domains**
 
 my-domain.com &rarr; www.my-domain.com
+
+Naked domains are not supported in Heroku (e.g. domains without a sub-domain at the 
+beginning - <a href="https://devcenter.heroku.com/articles/avoiding-naked-domains-dns-arecords">
+https://devcenter.heroku.com/articles/avoiding-naked-domains-dns-arecords</a>)
+
+Use your DNS registrar's URL forwarding service to map the naked to the 'www' 
+version.
+
+Instructions for: <a href="http://support.godaddy.com/help/article/422/forwarding-or-masking-your-domain-name">GoDaddy</a>,
+<a href="http://www.namecheap.com/support/knowledgebase/article.aspx/385/77/how-do-i-set-up-url-forwarding-for-a-domain">NameCheap</a>, etc
 
 ###Create New Post
 
