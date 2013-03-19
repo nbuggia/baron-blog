@@ -1,4 +1,6 @@
 # Robots.txt
-
+#
+# Mucho information on configuring this file:
+# 	http://www.nathanbuggia.com/posts/search/managing-search-engine-access-to-your-site/
 
 Sitemap: <%= @params[:rss_feed] %>

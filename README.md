@@ -27,7 +27,7 @@ Dependencies: <a href="http://git-scm.com/">git</a>,
 
 	$ git clone https://github.com/nbuggia/baron-blog.git
 	$ cd baron-blog
-	$ heroku create my-blog
+	$ heroku create my-blog-name
 	$ git push heroku master
 	$ heroku open
 
@@ -54,13 +54,13 @@ From the Heroku Dashboard, go to the **Settings** section of the app you
 created, and enter your domain in the **Domains** section. Always specify a 
 sub-domain (like 'www') in your domain name when using heroku.
 
-**Update your DNS Provider**
+Update your DNS Provider:
 
 You'll need to update your DNS records from your registrar with Heroku's name 
 servers. Heroku provides instructions here: <a href="https://devcenter.heroku.com/articles/custom-domains">
 https://devcenter.heroku.com/articles/custom-domains</a>
 
-**Map Naked Domains**
+Map Naked Domains:
 
 my-domain.com &rarr; www.my-domain.com
 
@@ -74,21 +74,25 @@ version.
 Instructions for: <a href="http://support.godaddy.com/help/article/422/forwarding-or-masking-your-domain-name">GoDaddy</a>,
 <a href="http://www.namecheap.com/support/knowledgebase/article.aspx/385/77/how-do-i-set-up-url-forwarding-for-a-domain">NameCheap</a>, etc
 
-###Create New Post
+###Create New Article
 
 	$ rake new
 	Title: My Blog Title
 
-This command creates a new blog post with the current date in your 
-<code>drafts/</code> folder.
+The easiest way to create a new article is to use the helper comand in the rake 
+file as show above. It will automatically create a new article for you with the 
+current date.
 
-To create a new post, you simply create a new text file in your favorite 
-editor. Simply save the file somewhere in your <code>articles/</code> folder in
-the format of <code>YYYY-MM-DD-article-title.txt</code>. Where YYYY means the
-year in 4 digits, MM means the month in two digits and DD means the day of the 
-month in 2 digits.
+You can also create a new article manually by saving a text file with a 
+filename in the following format:
 
-**Attributes**
+	YYYY-MM-DD-article-title.txt
+
+Where <code>YYYY-MM-DD</code> is the articles data of publication with. Where 
+YYYY means the year in 4 digits, MM means the month in two digits and DD means 
+the day of the month in 2 digits.
+
+Writing the Article:
 
 The first few lines of the file are where you can place attribute value
 pairs in YAML format (e.g. <code>my_attribute: 'attribute'</code>). Add two new 
@@ -100,80 +104,142 @@ template with <code>@article[:my_attribute]</code>.
 * If you need to use ':' or other special characters in your value, wrap it in 
 quotes (e.g. <code>title: "My article: Lots & Lots of Smiles"</code>)
 
-Notes
+Sample article: 
 
-* Baron forces all folder names and file names to lower case for canonicalization
-* You can't have periods in the file name
+	title: The Road Not Taken
+	author: Robert Frost
+
+	Two roads diverged in a yellow wood,<br/>
+	And sorry I could not travel both<br/>
+	And be one traveler, long I stood<br/>
+	And looked down one as far as I could<br/>
+	To where it bent in the undergrowth;
+
+Publish Post: 
+
+Move the article from your drafts folder to somewhere in your <code>articles/</code>
+folder and then publish the blog (see **Publish Your Blog**)
+
+Any folders created in the <code>articles/</code> folder will automatically 
+converted into categories in the blog. I recommend that you keep foldernames 
+all lower case, and use '-' instead of spaces to keep your URLs clean.
+
+###Publish Your Blog
+
+	$ git add .
+	$ git commit -m 'Publishing article: My article name'
+	$ git push heroku master
+
+Publish is super simple with git.
+
+Before you publish for realz, you should delete a few things:
+
+* ./pages/test.rhtml
+* ./images/baron-von-underbite.png
 
 ###Create A New Custom Page
 
-use the directory structure
+You can also create custom pages that are accessible 1 level off your blog's 
+root like /about, /contact-us or /project-foobar. Simply create a new file in
+the <code>/pages</code> folder with the following format:
+
+	page-name.rhtml
+
+The <code>page-name</code> will be used as the URL (e.g. my-blog.com/page-name) 
+
+* Make sure that you avoid URL collisions by not naming this the same as any of 
+your categories, or article names. Or add a :permalink_prefix in the 
+<code>config.ru</code> to disambiguate.
+* I recommend keeing the page titles in all lower case, use '-' for spaces to 
+keep your URLs pretty (and functional)
+* Custom pages have access to all the same variables as the rendering 
+templates, you can see this list of variables by going to the /test page on 
+your blog after you run it.
+
+Example Custom Page: 
+
+	<header>
+		<h1>About Robert Frost</h1>
+	</header>
+
+	<article>
+		<p>
+			TODO: add a nice description for Mr. Robert Frost
+		</p>	
+	</article>
+
+###Run Blog Locally
+
+Requires Thin web server
+
+	$ sudo gem install thin
+	$ thin start
+
+If you make a change to config.ru, you will need to restart thin. Other changes
+only require reloading the page in your browser.
+
+###Creating Your Own Themes
+
+Themes are self-contained within their own folders under the <code>./themes</code>
+folder.
+
+* Simply create a new folder in 'themes' for your new theme
+* Each rendering template has access to all the varables documented in the 
+<code>http://my-blog.com/test</code> page.
+
+Just do a pull request if you would like your theme incorporated back into this 
+project.
 
 ###Setup redirects
 
+	$ less ./resources/redirects.txt
 
-###SEO
+Baron supports redirects to make it easy to migrate from another engine, and 
+so you can fix broken links or URL restructuring over time.
+
+This is what a Redirect looks like:
+
+	Redirect 301 /page/1 /
+
+Here's what the fields mean
+
+* **Redirect** - just indicates the start of the line, no other options 
+available at this time
+* **301** - this is the status code, 301 means permanent redirect. Check out 
+this article from Google covering all the possible codes and how you should use
+them: http://support.google.com/webmasters/bin/answer.py?hl=en&answer=40132
+* **/page/1** - specifies the source URL. This is the broken URL you are going 
+to redirect to somewhere else.
+* **/** - specifies the desitination URL. This is where you are redirecting to
+
+Unfortunatley, it don't support regular expressions in the redirects yet :(
 
 ###Explore the Project
 
-Project structure:
-
-		├── Gemfile
-		├── Rakefile
+		├── Gemfile								List the dependencies for the blog
+		├── Gemfile.lock						Heroku uses this to install dependencies
+		├── Rakefile							Helper code for managing your blog
 		├── articles/							place your published articles here
-		│   ├── 2012-11-09-sample-1.txt			the date and URL slug are the filename
-		│   └── category/						creating folders puts these articles in a category
-		│   ├── another category/				spaces in folder names will be replaces with '-'s
-		├── config.ru							configure features of the blog here
-		├── downloads/							files in here are publicly accessible	
-		├── drafts/								place for your unfinished articles
-		├── images/								images in here are publicly accessible
-		├── pages/								you can create custom pages in here
-		│   └── about.rhtml
-		├── resources/							
-		│   ├── feed.rss						your rss feed's rendering template
-		│   ├── redirects.txt					list of redirects the blog will process
-		│   └── robots.txt						your robots.txt file
-		└── themes/
-		    └── my-theme/						each theme has the same folder structure
+		│   ├── 2012-11-09-sample-1.txt			Date and URL slug are the filename
+		│   └── category/						Creating folders puts these articles in a category
+		│   ├── another-category/				Use dashes ('-') for spaces in folder names
+		├── config.ru							Configure features of the blog here
+		├── downloads/							Files in here are publicly accessible	
+		├── drafts/								Place for your unfinished articles
+		├── images/								Images in here are publicly accessible
+		├── pages/								You can create custom pages in here
+		│   ├── about.rhtml 					Example custom page
+		│   └── test.rhtml 						Custom page that illustrates the variables available
+		├── resources/							Resources used by the blog that are theme independent
+		│   ├── feed.rss						Rss feed rendering template
+		│   ├── redirects.txt					List of redirects the blog will process
+		│   └── robots.txt						Robots.txt file (rendered!)
+		└── themes/								
+		    └── my-theme/						Each theme has the same folder structure
 		        ├── css/
 		        ├── img/
 		        ├── js/
 		        └── templates/					rhtml rendering templates for each page type
-
-###Create a New Article
-
-
-###Create a New Page
-
-
-###Add a Custom Domain Name in Heroku (free!)
-
-TODO
-
-###Deploy to Heroku (free!)
-
-TODO
-
-###Domain Name Configuration
-
-Then setup use the Forwarding feature in GoDaddy to send buggia.org --> www.buggia.org
-
-http://stackoverflow.com/questions/11492563/heroku-godaddy-send-naked-domain-to-www
-
-
-###Run Blog Locally
-
-Uses Thin to run the blog
-
-	> cd my-blog
-	> sudo gem install thin
-	> thin start
-
-If you make a change to config.ru, you will need to restart thin.
-
-###Creating Your Own Themes
-
 
 ##Next Steps
 
@@ -200,9 +266,17 @@ really easy to use
 to write one in C++ in college and was only able to do static linking (lame). I
 think an interpreted language will make it much easier, right?
 
+##TODO
+
+* Document SEO tips & tricks
+* Add 'publish' task to the rake file
+
 ##Namesake
 
-Pictures of the adorable baron von underbite
+This project was named after the adorable baron von underbite of Seattle 
+Greenlake fame: 
+
+<img alt="pictures of baron von underbite" src="https://github.com/nbuggia/baron-blog/blob/master/images/baron-von-underbite.png" />
 
 ##Thanks
 
