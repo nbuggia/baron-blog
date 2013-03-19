@@ -276,7 +276,7 @@ think an interpreted language will make it much easier, right?
 This project was named after the adorable baron von underbite of Seattle 
 Greenlake fame: 
 
-<img alt="pictures of baron von underbite" src="https://github.com/nbuggia/baron-blog/blob/master/images/baron-von-underbite.png" />
+<img alt="pictures of baron von underbite" src="images/baron-von-underbite.png" />
 
 ##Thanks
 
