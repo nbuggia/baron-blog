@@ -270,6 +270,8 @@ think an interpreted language will make it much easier, right?
 
 * Document SEO tips & tricks
 * Add 'publish' task to the rake file
+* Add support for Author pages
+* Add support for DISQUS
 
 ##Namesake
 

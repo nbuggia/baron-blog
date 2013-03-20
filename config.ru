@@ -33,7 +33,7 @@ baron = Baron::Server.new do
   # Specify which theme you would like to use. You can see the list of themes 
   # in the themes/ folder.
   # TODO: link to article for hacking your own theme
-  set :theme, 'typography'
+  set :theme, 'corporate'
 
   # Specify how and if you would like the article date to be included in your 
   # permalink URL. 

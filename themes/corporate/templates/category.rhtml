@@ -1,0 +1,17 @@
+<header>
+	<h1><%= @params[:page_name] %></h1>
+</header>
+
+<!-- Article List -->
+<section id="articles">
+	<ol>
+  		<% for @article in @articles %>
+		<li>
+			<time><%= @article.date %></time>
+			<section class="title">
+				<a href="<%= @article.path %>"><%= @article.title %></a>
+			</section>
+		</li>
+  		<% end %>
+	</ol>
+</section>
