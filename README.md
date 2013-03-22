@@ -17,7 +17,7 @@ date formats
 * SEO optimized with built-in support for Robots.txt, Google Analytics, Google 
 web master tools
 * Easy to customize the look & feel via a common site layout template
-* Frameworks used: Rack, RSpec, Bootstrap, JQuery, HTML5
+* Tech used: Rack, RSpec, Bootstrap, JQuery, HTML5, DISQUS
 
 ##Quick Start
 
@@ -34,9 +34,8 @@ Dependencies: <a href="http://git-scm.com/">git</a>,
 Yay! Now you probably are going to want to customize this thing, read on for 
 all the bells and whistles.
 
-##Quick How To's
 
-###Customize Your Blog
+##Customize Your Blog
 
 	$ less config.ru
 
@@ -45,36 +44,21 @@ set from inside <a href="https://github.com/nbuggia/baron-blog/blob/master/confi
 The file is well documented for all the options.
 
 The other big customization route is to hack the theme to either make your own,
-or to just modify it the way you'd like. Check out the 
-**Creating Your Own Themes*** section for more information.
+or to just modify it the way you'd like. 
 
-###Adding a Custom Domain Name (with Heroku)
+**Creating Your Own Themes**
 
-From the Heroku Dashboard, go to the **Settings** section of the app you 
-created, and enter your domain in the **Domains** section. Always specify a 
-sub-domain (like 'www') in your domain name when using heroku.
+Themes are self-contained within their own folders under the <code>./themes</code>
+folder.
 
-Update your DNS Provider:
+* Simply create a new folder in 'themes' for your new theme
+* Each rendering template has access to all the varables documented in the 
+<code>http://my-blog.com/test</code> page.
 
-You'll need to update your DNS records from your registrar with Heroku's name 
-servers. Heroku provides instructions here: <a href="https://devcenter.heroku.com/articles/custom-domains">
-https://devcenter.heroku.com/articles/custom-domains</a>
+Just do a pull request if you would like your theme incorporated back into this 
+project.
 
-Map Naked Domains:
-
-my-domain.com &rarr; www.my-domain.com
-
-Naked domains are not supported in Heroku (e.g. domains without a sub-domain at the 
-beginning - <a href="https://devcenter.heroku.com/articles/avoiding-naked-domains-dns-arecords">
-https://devcenter.heroku.com/articles/avoiding-naked-domains-dns-arecords</a>)
-
-Use your DNS registrar's URL forwarding service to map the naked to the 'www' 
-version.
-
-Instructions for: <a href="http://support.godaddy.com/help/article/422/forwarding-or-masking-your-domain-name">GoDaddy</a>,
-<a href="http://www.namecheap.com/support/knowledgebase/article.aspx/385/77/how-do-i-set-up-url-forwarding-for-a-domain">NameCheap</a>, etc
-
-###Create New Article
+##Create New Article
 
 	$ rake new
 	Title: My Blog Title
@@ -124,20 +108,7 @@ Any folders created in the <code>articles/</code> folder will automatically
 converted into categories in the blog. I recommend that you keep foldernames 
 all lower case, and use '-' instead of spaces to keep your URLs clean.
 
-###Publish Your Blog
-
-	$ git add .
-	$ git commit -m 'Publishing article: My article name'
-	$ git push heroku master
-
-Publish is super simple with git.
-
-Before you publish for realz, you should delete a few things:
-
-* ./pages/test.rhtml
-* ./images/baron-von-underbite.png
-
-###Create A New Custom Page
+##Create A Custom Page
 
 You can also create custom pages that are accessible 1 level off your blog's 
 root like /about, /contact-us or /project-foobar. Simply create a new file in
@@ -168,29 +139,73 @@ Example Custom Page:
 		</p>	
 	</article>
 
-###Run Blog Locally
+## Advanced Heroku Config
 
-Requires Thin web server
+	$ git add .
+	$ git commit -m 'Publishing article: My article name'
+	$ git push heroku master
 
-	$ sudo gem install thin
-	$ thin start
+Publish is super simple with git.
 
-If you make a change to config.ru, you will need to restart thin. Other changes
-only require reloading the page in your browser.
+Before you publish for realz, you should delete a few things:
 
-###Creating Your Own Themes
+* ./pages/test.rhtml
+* ./images/baron-von-underbite.png
 
-Themes are self-contained within their own folders under the <code>./themes</code>
-folder.
+**Adding a Custom Domain Name**
 
-* Simply create a new folder in 'themes' for your new theme
-* Each rendering template has access to all the varables documented in the 
-<code>http://my-blog.com/test</code> page.
+From the Heroku Dashboard, go to the **Settings** section of the app you 
+created, and enter your domain in the **Domains** section. Always specify a 
+sub-domain (like 'www') in your domain name when using heroku.
 
-Just do a pull request if you would like your theme incorporated back into this 
-project.
+Update your DNS Provider:
 
-###Setup redirects
+You'll need to update your DNS records from your registrar with Heroku's name 
+servers. Heroku provides instructions here: <a href="https://devcenter.heroku.com/articles/custom-domains">
+https://devcenter.heroku.com/articles/custom-domains</a>
+
+Map Naked Domains:
+
+my-domain.com &rarr; www.my-domain.com
+
+Naked domains are not supported in Heroku (e.g. domains without a sub-domain at the 
+beginning - <a href="https://devcenter.heroku.com/articles/avoiding-naked-domains-dns-arecords">
+https://devcenter.heroku.com/articles/avoiding-naked-domains-dns-arecords</a>)
+
+Use your DNS registrar's URL forwarding service to map the naked to the 'www' 
+version.
+
+Instructions for: <a href="http://support.godaddy.com/help/article/422/forwarding-or-masking-your-domain-name">GoDaddy</a>,
+<a href="http://www.namecheap.com/support/knowledgebase/article.aspx/385/77/how-do-i-set-up-url-forwarding-for-a-domain">NameCheap</a>, etc
+
+**Explore the Blog Structure**
+
+├── Gemfile								List the dependencies for the blog
+├── Gemfile.lock						Heroku uses this to install dependencies
+├── Rakefile							Helper code for managing your blog
+├── articles/							place your published articles here
+│   ├── 2012-11-09-sample-1.txt			Date and URL slug are the filename
+│   └── category/						Creating folders puts these articles in a category
+│   ├── another-category/				Use dashes ('-') for spaces in folder names
+├── config.ru							Configure features of the blog here
+├── downloads/							Files in here are publicly accessible	
+├── drafts/								Place for your unfinished articles
+├── images/								Images in here are publicly accessible
+├── pages/								You can create custom pages in here
+│   ├── about.rhtml 					Example custom page
+│   └── test.rhtml 						Custom page that illustrates the variables available
+├── resources/							Resources used by the blog that are theme independent
+│   ├── feed.rss						Rss feed rendering template
+│   ├── redirects.txt					List of redirects the blog will process
+│   └── robots.txt						Robots.txt file (rendered!)
+└── themes/								
+    └── my-theme/						Each theme has the same folder structure
+        ├── css/
+        ├── img/
+        ├── js/
+        └── templates/					rhtml rendering templates for each page type
+
+## Redirects
 
 	$ less ./resources/redirects.txt
 
@@ -213,33 +228,6 @@ to redirect to somewhere else.
 * **/** - specifies the desitination URL. This is where you are redirecting to
 
 Unfortunatley, it don't support regular expressions in the redirects yet :(
-
-###Explore the Project
-
-		├── Gemfile								List the dependencies for the blog
-		├── Gemfile.lock						Heroku uses this to install dependencies
-		├── Rakefile							Helper code for managing your blog
-		├── articles/							place your published articles here
-		│   ├── 2012-11-09-sample-1.txt			Date and URL slug are the filename
-		│   └── category/						Creating folders puts these articles in a category
-		│   ├── another-category/				Use dashes ('-') for spaces in folder names
-		├── config.ru							Configure features of the blog here
-		├── downloads/							Files in here are publicly accessible	
-		├── drafts/								Place for your unfinished articles
-		├── images/								Images in here are publicly accessible
-		├── pages/								You can create custom pages in here
-		│   ├── about.rhtml 					Example custom page
-		│   └── test.rhtml 						Custom page that illustrates the variables available
-		├── resources/							Resources used by the blog that are theme independent
-		│   ├── feed.rss						Rss feed rendering template
-		│   ├── redirects.txt					List of redirects the blog will process
-		│   └── robots.txt						Robots.txt file (rendered!)
-		└── themes/								
-		    └── my-theme/						Each theme has the same folder structure
-		        ├── css/
-		        ├── img/
-		        ├── js/
-		        └── templates/					rhtml rendering templates for each page type
 
 ##Next Steps
 
@@ -271,7 +259,6 @@ think an interpreted language will make it much easier, right?
 * Document SEO tips & tricks
 * Add 'publish' task to the rake file
 * Add support for Author pages
-* Add support for DISQUS
 
 ##Namesake
 
