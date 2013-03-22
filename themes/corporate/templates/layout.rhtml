@@ -23,106 +23,66 @@
 	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="<%= @theme_root %>/img/apple-icon-114.png">
 	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="<%= @theme_root %>/img/apple-icon-72.png">
 	<link rel="apple-touch-icon-precomposed" sizes="57x57" href="<%= @theme_root %>/img/apple-icon-57.png">
-	<link rel="shortcut icon" href="/images/favicon.png">
-		
+	<link rel="shortcut icon" href="/images/favicon.png">	
 </head>
 <body>
 	<!-- HEADER -->
-	<% if @params[:page_name] == @config[:root] %>
 	<div id="header" class="wrapper">
 		<div class="container-fluid content-strip">
 			<header>
-				<p id="header-image"><a class="logo" href="/"><img src="/images/<%= @config[:header_image] %>" /></a></p>
-				<p id="blog-title"><a href="/" class="blog-title subtle"><%= @config[:title] %></a></p>
-			</header>
-		</div>
-	</div>
-	<% else %>
-	<div id="header" class="wrapper">
-		<div class="container-fluid content-strip">
-			<header>
-				<p id="header-image"><a href="/" class="logo" title="<%= @config[:title] %> <%= @config[:title_delimiter] %> home">
-					<img src="/images/<%= @config[:header_image_small] %>" /></a>
+				<p id="blog-title">
+					<a class="logo" href="/"><img src="/images/<%= @config[:header_image_small] %>" /></a>
+					<a href="/" class="subtle"><%= @config[:title] %></a>
 				</p>
 			</header>
 		</div>
 	</div>
-	<% end %>
-		
-	<!-- MAIN CONTENT -->
-	<div id="content" class="wrapper">	
-		<div class="container-fluid content-strip">
-			<div class="row-fluid">			
-				<div class="posts">
-					<%= @content %> 
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!-- CATEGORIES -->
-	<div id="navigation" class="wrapper navigation-wrapper">
+	
+	<!-- CONTENT -->
+	<div id="content" class="wrapper">
 		<div class="container-fluid content-strip">
 			<div class="row-fluid">
-				<div class="span3">
-					<h4>Pages</h4>
-					<ul>
-						<li><% if @params[:page_name] != @config[:root] %><a href="/">Home</a><% end %></li>
-						<li><a href="/about">About</a></li>
-						<li><a href="/archives">Archives</a></li>
-					</ul>
+			
+				<!-- RENDERING TEMPLATE CONTENT -->
+				<div class="span8">
+					<div class="articles">
+						<%= @content %> 
+					</div>
 				</div>
-				
-				<% if @categories %>
-				<div class="span3">
-					<h4>Categories</h4>
-					<section id="categories">
-						<ul>
-							<% for @category in @categories %>
-							<li>
-								<a href="<%= @category[:path] %>"><%= @category[:name] %> (<%= @category[:count] %>)</a>
-							</li>
-							<% end %>
-						</ul>
-					</section>
-				</div>
-				<% end %>
-						
-				<div class="span3">
+			
+				<!-- SIDEBAR -->
+				<div id="sidebar" class="span3 offset1 small">
+					<h3 class="first">About</h3>
+					<p><%= @config[:description] %></p>
+					<h3>Follow us</h3>
 					<ul>
+						<% if !@config[:twitter_id].empty? %>
 						<li>
 							<span class="icon">t</span>
-							<a href="http://twitter.com/nathanbuggia">Twitter</a>
+							<a href="https://twitter.com/<%= @config[:twitter_id] %>">@<%= @config[:twitter_id] %> on Twitter</a>
 						</li>
-						<li>
-							<span class="icon">l</span>
-							<a href="http://linkedin.com/in/nbuggia">LinkedIn</a>
-						</li>
-						<li>
-							<span class="icon">G</span>
-							<a href="https://github.com/nbuggia">GitHub</a>
-						</li>
-						<li>
-							<a href="http://slideshare.net/nbuggia">Slideshare</a>
-						</li>
-					</ul>
-				</div>
-				
-				<div class="span3">
-					<ul>
+						<% end %>
 						<li>
 							<span class="icon">r</span>
-							<a href="/feed.rss">RSS Feed</a>
+							<a href="<%= @config[:rss_feed] %>">RSS Feed</a>
 						</li>
+					</ul>
+					<h3>Categories</h3>
+					<ul>
+						<% for @category in @categories %>
+						<li>
+							<a href="<%= @category[:path] %>"><%= @category[:name] %> (<%= @category[:count] %>)</a>
+						</li>
+						<% end %>
 					</ul>
 				</div>
 			</div>
 		</div>
 	</div>
-		
+	
 	<!-- FOOTER -->
-	<div id="footer" class="wrapper footer-wrapper">
-		<div class="container-fluid content-strip">
+	<div id="footer" class="wrapper">
+	    <div class="container-fluid content-strip">
 			<footer class="row-fluid">
 				<p> &copy; 2001-<script>document.write(new Date().getFullYear());</script> &bull;
 					All rights reserved &bull;
@@ -130,7 +90,7 @@
 			</footer>
 		</div>
 	</div>
-	
+		
 	<!-- SCRIPTS -->
 	<script src="http://code.jquery.com/jquery-1.8.2.min.js" type="text/javascript" charset="utf-8"></script>
 	<script src="/js/image_alt.js" type="text/javascript" charset="utf-8"></script>

@@ -18,6 +18,7 @@ h4 {text-transform: uppercase; font-size:0.76em;}
     font-weight: normal;
     font-style: normal;
 }
+
 .icon {font-family:"social-media-icons";}
 
 a:link, a:hover, a:visited, a:active {color:#069;}
@@ -68,3 +69,5 @@ div.content-strip {max-width: 38em; margin: 0 auto;}
 article li {line-height:1.3em; padding-top:0.3em; padding-bottom:0.3em;}
 article p {padding:0.5em 0 0.5em 0;}
 article table, article th, article td {border: 1px solid #444;}
+
+#disqus_thread {padding-top:3em;}

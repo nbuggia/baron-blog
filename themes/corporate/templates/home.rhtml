@@ -1,16 +1,25 @@
 <!-- Article List -->
 <section id="articles">
-	<ol>
-		<% for @article in @articles %>
-		<li>
-			<time><%= @article.date %></time>
-			<section class="title">
-				<a href="<%= @article.path %>"><%= @article.title %></a>
-				<span><%= @article.category %></span>
+	<% for @article in @articles %>
+	<article>
+		<h2><a href="<%= @article.permalink %>"><%= @article.title %></a></h2>
+		<section>
+			<section class="details">
+				<span>
+					Posted on <time class="param"><%= @article.date %></time>
+					by <span class="param"><%= @article[:author] %></span>
+					<% if !@article[:category].empty? %>in <span class="param"><%= @article[:category] %></span><% end %>
+				</span>
+				<!-- &bull; <a href="<%= @article.permalink %>">Permalink</a> -->
+				<!-- <% if !@config[:disqus_shortname].empty? %>&bull; <a href="#disqus_thread"></a><% end %> -->
+				<!-- &bull; <a href="javascript:void(0)" onclick="read_later('<%= @article.path %>');">Read Later</a> -->
 			</section>
-		</li>
-		<% end %>
-	</ol>
+			<section>
+				<%= @article.body %>
+			</section>
+		</section>
+	</article>
+	<% end %>
 </section>
 
 <!-- Pagination -->

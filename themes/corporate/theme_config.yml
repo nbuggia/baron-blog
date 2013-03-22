@@ -1,0 +1,18 @@
+###
+# Theme Config File
+# 
+# Name: corporate
+# Author: Nathan Buggia <nbuggia@gmail.com>
+# Date: 22 March 2013
+# 
+# The Corporate theme is meant to server as a base blog theme for corporate
+# blogs in the form of http://blog.my-corporation.com. It expects there will be
+# multiple authors and categories.
+#
+
+# the URL to the parent site of the blog
+masthead_url: 'http://www.my-corporation.com'
+
+# a simple paragraph description of your blog included in the sidebar
+company_description: 'Insert content here'
+

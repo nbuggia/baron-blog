@@ -1,2 +1,2 @@
 Theme: corporate
-Description: designed to support blogs for corporate websites
+Description: designed to support blogs for corporate websites.

@@ -5,9 +5,6 @@ require 'baron'
 
 baron = Baron::Server.new do
 
-  # Turns on blog comments using disqus. true or false
-  set :disqus, true
-
   # Specify the title of your blog
   set :title, 'Robert Frost'
 
@@ -48,6 +45,14 @@ baron = Baron::Server.new do
   # for example: http://nathanbuggia.com
   set :url, 'http://localhost:3000/'
 
+  # specify your Disqus id to enable comments on your blog
+  # format of "mysiteblog"
+  set :disqus_shortname, ''
+
+  # specify your twitter id if you want to include 'follow me on twitter'
+  # format of "mysiteblog"
+  set :twitter_id, 'RobertFrostbyte'
+
   # specify your google analytics ID 
   # format of "UA-XXXXXX-X"
   set :google_analytics, ''
@@ -57,9 +62,9 @@ baron = Baron::Server.new do
   set :google_webmaster, ''
 
   # You can add any value here like this:
-  # => set :foo_bar, 'foobar'
+  #   set :foo_bar, 'foobar'
   # and then access it from any of the rhtml templates like this:
-  # => <%= @config[:foo_bar] %>
+  #   <%= @config[:foo_bar] %>
 
 end
  
