@@ -12,29 +12,36 @@
 	<script type="text/javascript" src="//use.typekit.net/xgg5zca.js"></script>
 	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 	
-	<link href="<%= @theme_root %>/css/bootstrap.css" rel="stylesheet">
-	<link href="<%= @theme_root %>/css/theme.css" rel="stylesheet">
-	<link href="<%= @theme_root %>/css/bootstrap-responsive.css" rel="stylesheet">	
+	<link href="<%= @theme.root %>/css/bootstrap.css" rel="stylesheet">
+	<link href="<%= @theme.root %>/css/theme.css" rel="stylesheet">
+	<link href="<%= @theme.root %>/css/bootstrap-responsive.css" rel="stylesheet">	
 	
 	<!-- [if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 	
 	<!-- Fav and touch icons -->
-	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="<%= @theme_root %>/img/apple-icon-144.png">
-	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="<%= @theme_root %>/img/apple-icon-114.png">
-	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="<%= @theme_root %>/img/apple-icon-72.png">
-	<link rel="apple-touch-icon-precomposed" sizes="57x57" href="<%= @theme_root %>/img/apple-icon-57.png">
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="<%= @theme.root %>/img/apple-icon-144.png">
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="<%= @theme.root %>/img/apple-icon-114.png">
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="<%= @theme.root %>/img/apple-icon-72.png">
+	<link rel="apple-touch-icon-precomposed" sizes="57x57" href="<%= @theme.root %>/img/apple-icon-57.png">
 	<link rel="shortcut icon" href="/images/favicon.png">	
 </head>
 <body>
-	<!-- HEADER -->
+	<!-- TOP NAV -->
 	<div id="header" class="wrapper">
 		<div class="container-fluid content-strip">
 			<header>
 				<p id="blog-title">
-					<a class="logo" href="/"><img src="/images/<%= @config[:header_image_small] %>" /></a>
+					<a class="logo" href="<%= @theme[:masthead_url] %>"><img src="/images/<%= @config[:header_image_small] %>" /></a>
 					<a href="/" class="subtle"><%= @config[:title] %></a>
 				</p>
 			</header>
+		</div>
+	</div>
+	
+	<!-- HEADER -->
+	<div id="header" class="wrapper">
+		<div class="container-fluid content-strip">
+			<a href="/">Blog</a>
 		</div>
 	</div>
 	
@@ -53,7 +60,7 @@
 				<!-- SIDEBAR -->
 				<div id="sidebar" class="span3 offset1 small">
 					<h3 class="first">About</h3>
-					<p><%= @config[:description] %></p>
+					<p><%= @theme[:company_description] %></p>
 					<h3>Follow us</h3>
 					<ul>
 						<% if !@config[:twitter_id].empty? %>

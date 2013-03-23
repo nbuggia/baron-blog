@@ -8,7 +8,6 @@ h4 {text-transform: uppercase; font-size:0.76em;}
 .small {font-size:0.8em;}
 .center {text-align: center;}
 .first {padding-top:0; margin-top:0;}
-.last {padding-bottom:0; margin-bottom:0;}
 
 @font-face {
     font-family:'social-media-icons';
@@ -45,6 +44,8 @@ div.content-strip {max-width: 960px; margin:0 auto;}
 .navigation-wrapper {background-color:#eee;}
 #navigation ul, #sidebar ul {list-style-type:none; margin-left:0;}
 #navigation li, #sidebar li {padding-top:0.3em; padding-bottom: 0.3em;}
+
+#sidebar p {line-height:1.4em; color:#888;}
 
 #footer {text-align:center; font-size:0.8em; line-height:0.8em; padding-top:1em; padding-bottom:1em;}
 #footer p {margin:1em 0 1em 0}

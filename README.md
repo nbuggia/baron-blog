@@ -34,7 +34,6 @@ Dependencies: <a href="http://git-scm.com/">git</a>,
 Yay! Now you probably are going to want to customize this thing, read on for 
 all the bells and whistles.
 
-
 ##Customize Your Blog
 
 	$ less config.ru
@@ -46,14 +45,19 @@ The file is well documented for all the options.
 The other big customization route is to hack the theme to either make your own,
 or to just modify it the way you'd like. 
 
-**Creating Your Own Themes**
+###Creating Your Own Themes
 
 Themes are self-contained within their own folders under the <code>./themes</code>
 folder.
 
-* Simply create a new folder in 'themes' for your new theme
+I would recommend starting by forking this project and then duplicating one of 
+the existing themes and modifying it.
+
+* Theme-specific configuration - Each theme has a theme_config.yml file where
+you can specify your own parameters and then access them from within the blog 
+via <code>&lt;%= @theme[:foo_bar] %&gt;</code>
 * Each rendering template has access to all the varables documented in the 
-<code>http://my-blog.com/test</code> page.
+<code>/test/</code> page from your blog (unless you've deleted it).
 
 Just do a pull request if you would like your theme incorporated back into this 
 project.
@@ -152,7 +156,7 @@ Before you publish for realz, you should delete a few things:
 * ./pages/test.rhtml
 * ./images/baron-von-underbite.png
 
-**Adding a Custom Domain Name**
+###Adding a Custom Domain Name
 
 From the Heroku Dashboard, go to the **Settings** section of the app you 
 created, and enter your domain in the **Domains** section. Always specify a 
@@ -178,32 +182,32 @@ version.
 Instructions for: <a href="http://support.godaddy.com/help/article/422/forwarding-or-masking-your-domain-name">GoDaddy</a>,
 <a href="http://www.namecheap.com/support/knowledgebase/article.aspx/385/77/how-do-i-set-up-url-forwarding-for-a-domain">NameCheap</a>, etc
 
-**Explore the Blog Structure**
+###Explore the Blog Structure
 
-├── Gemfile								List the dependencies for the blog
-├── Gemfile.lock						Heroku uses this to install dependencies
-├── Rakefile							Helper code for managing your blog
-├── articles/							place your published articles here
-│   ├── 2012-11-09-sample-1.txt			Date and URL slug are the filename
-│   └── category/						Creating folders puts these articles in a category
-│   ├── another-category/				Use dashes ('-') for spaces in folder names
-├── config.ru							Configure features of the blog here
-├── downloads/							Files in here are publicly accessible	
-├── drafts/								Place for your unfinished articles
-├── images/								Images in here are publicly accessible
-├── pages/								You can create custom pages in here
-│   ├── about.rhtml 					Example custom page
-│   └── test.rhtml 						Custom page that illustrates the variables available
-├── resources/							Resources used by the blog that are theme independent
-│   ├── feed.rss						Rss feed rendering template
-│   ├── redirects.txt					List of redirects the blog will process
-│   └── robots.txt						Robots.txt file (rendered!)
-└── themes/								
-    └── my-theme/						Each theme has the same folder structure
-        ├── css/
-        ├── img/
-        ├── js/
-        └── templates/					rhtml rendering templates for each page type
+	├── Gemfile								List the dependencies for the blog
+	├── Gemfile.lock						Heroku uses this to install dependencies
+	├── Rakefile							Helper code for managing your blog
+	├── articles/							place your published articles here
+	│   ├── 2012-11-09-sample-1.txt			Date and URL slug are the filename
+	│   └── category/						Creating folders puts these articles in a category
+	│   ├── another-category/				Use dashes ('-') for spaces in folder names
+	├── config.ru							Configure features of the blog here
+	├── downloads/							Files in here are publicly accessible	
+	├── drafts/								Place for your unfinished articles
+	├── images/								Images in here are publicly accessible
+	├── pages/								You can create custom pages in here
+	│   ├── about.rhtml 					Example custom page
+	│   └── test.rhtml 						Custom page that illustrates the variables available
+	├── resources/							Resources used by the blog that are theme independent
+	│   ├── feed.rss						Rss feed rendering template
+	│   ├── redirects.txt					List of redirects the blog will process
+	│   └── robots.txt						Robots.txt file (rendered!)
+	└── themes/								
+	    └── my-theme/						Each theme has the same folder structure
+	        ├── css/
+	        ├── img/
+	        ├── js/
+	        └── templates/					rhtml rendering templates for each page type
 
 ## Redirects
 

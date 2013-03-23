@@ -11,8 +11,8 @@
 #
 
 # the URL to the parent site of the blog
-masthead_url: 'http://www.my-corporation.com'
+masthead_url: 'url partent-website (set parameter in themes/corporate/theme_config.yml)'
 
 # a simple paragraph description of your blog included in the sidebar
-company_description: 'Insert content here'
+company_description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec porta vestibulum ultrices. Vestibulum in orci id tortor ullamcorper adipiscing. Class aptent taciti sociosqu ad litora.'
 

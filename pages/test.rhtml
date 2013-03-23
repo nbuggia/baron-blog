@@ -1,39 +1,41 @@
 <h1>Test Page</h1>
 <p>
-	This page lists all the variables that are available to any renderingfile 
-	(e.g. ends in .rhtml).
+	This page lists all the variables that are available to any rendering file 
+	(e.g. ends in .rhtml). Rendering files are located in the custom pages folder
+	<code>pages/</code>, the <code>resources/</code> folder and the theme template 
+	folder <code>themes/theme-name/templates/</code>.
 </p>
 <p>
 	Access them through <code>&lt;%= @params[:page_name] %&gt;</code>, where 
-	<code>:page_name</code> is the name of the attribute you would like to access.
+	<code>:page_name</code> is the name of the attribute you want.
 </p>
 
-<h2>@theme_root</h2>
+<h2>@theme</h2>
 <p>
-	The <code>@theme_root</code> string provides the path to the current theme
-	root. It is only accessible from the 
-	<code>./themes/theme/templates/layout.rhtml</code> rendering template.
+	Gives you access to metadata about the theme, including parameters defined in 
+	the <code>themes/theme/theme_config.yml</code> file.
 </p>
+<section style="font-family:'Courier New'; padding-bottom:1em;"><%= @theme.inspect %></section>
 
 <h2>@params</h2>
 <p>
 	Gives you access to some useful data created during the page rendering.
 </p>
-<section style="font-family:'Courier New'"><%= @params.inspect %></section>
+<section style="font-family:'Courier New'; padding-bottom:1em;"><%= @params.inspect %></section>
 
 <h2>@config</h2>
 <p>
 	Gives you access to all the attribute/ value pairs specified in your 
 	<code>config.ru</code> file.
 </p>
-<section style="font-family:'Courier New'"><%= @config.inspect %></section>
+<section style="font-family:'Courier New'; padding-bottom:1em;"><%= @config.inspect %></section>
 
 <h2>@categories</h2>
 <p>
 	Gives you access to your list of categories and associated metadata. Useful
 	for creating a nav bar.
 </p>
-<section style="font-family:'Courier New'"><%= @categories.inspect %></section>
+<section style="font-family:'Courier New'; padding-bottom:1em;"><%= @categories.inspect %></section>
 
 <h2>@articles</h2>
 <p>
@@ -41,4 +43,4 @@
 	recent <code>@config[:max_articles]</code>). This also includes any 
 	additional attribute/ value pairs specified in the article header.
 </p>
-<section style="font-family:'Courier New'"><%= @articles.inspect %></section>
+<section style="font-family:'Courier New'; padding-bottom:1em;"><%= @articles.inspect %></section>
