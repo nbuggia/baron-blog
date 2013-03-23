@@ -12,8 +12,8 @@ baron = Baron::Server.new do
   set :description, 'The fake blog of Robert Frost'
 
   # Path to the image used in the site header
-  set :header_image, 'robert-frost.png'
-  set :header_image_small, 'robert-frost-small.png'
+  set :header_image, '/images/robert-frost.png'
+  set :header_image_small, '/images/robert-frost-small.png'
 
   # Specify the name you want your articles to appear written by
   set :author, 'Rob'
@@ -42,7 +42,7 @@ baron = Baron::Server.new do
 
   # Specify the URL of your blog for creating permalinks (good in case people
   # steal your content, then the links will still point to your articles.)
-  # for example: http://nathanbuggia.com
+  # for example: http://www.nathanbuggia.com
   set :url, 'http://localhost:3000/'
 
   # specify your Disqus id to enable comments on your blog

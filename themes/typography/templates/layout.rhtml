@@ -32,7 +32,7 @@
 	<div id="header" class="wrapper">
 		<div class="container-fluid content-strip">
 			<header>
-				<p id="header-image"><a class="logo" href="/"><img src="/images/<%= @config[:header_image] %>" /></a></p>
+				<p id="header-image"><a class="logo" href="/"><img src="<%= @config[:header_image] %>" /></a></p>
 				<p id="blog-title"><a href="/" class="blog-title subtle"><%= @config[:title] %></a></p>
 			</header>
 		</div>
@@ -42,7 +42,7 @@
 		<div class="container-fluid content-strip">
 			<header>
 				<p id="header-image"><a href="/" class="logo" title="<%= @config[:title] %> <%= @config[:title_delimiter] %> home">
-					<img src="/images/<%= @config[:header_image_small] %>" /></a>
+					<img src="<%= @config[:header_image_small] %>" /></a>
 				</p>
 			</header>
 		</div>

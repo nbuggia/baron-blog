@@ -10,6 +10,9 @@
 # multiple authors and categories.
 #
 
+# generally the company logo
+masthead_image: '/images/robert-frost-xsmall.png'
+
 # the URL to the parent site of the blog
 masthead_url: 'url partent-website (set parameter in themes/corporate/theme_config.yml)'
 

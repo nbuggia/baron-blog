@@ -19,7 +19,6 @@ h4 {text-transform: uppercase; font-size:0.76em;}
     font-weight:normal;
     font-style:normal;
 }
-
 .icon {font-family:"social-media-icons"; padding-right:0.5em;}
 
 a:link, a:hover, a:visited, a:active {color:#069;}
@@ -29,10 +28,12 @@ a:link.subtle, a:hover.subtle, a:visited.subtle, a:active.subtle {color:#444;}
 
 div.content-strip {max-width: 960px; margin:0 auto;}
 
-#header {padding-top:2em;}
+#top-nav {background-color:#eee; border-bottom:1px solid #ccc;}
+
+#header {padding:0.5em 0 0.5em 0; border-bottom:1px solid #ccc;}
 #header-image {display:block; text-align:center;}
-#blog-title {font-size:2em; line-height:1.8em; padding-top:1em;}
-#blog-title img {padding-right:1em;}
+#blog-title {font-size:2em; margin:0;}
+#blog-title img {padding-right:1em; margin:10px 0 10px 0;}
 
 #content {padding-top:2em; padding-bottom:5em;}
 
@@ -47,7 +48,7 @@ div.content-strip {max-width: 960px; margin:0 auto;}
 
 #sidebar p {line-height:1.4em; color:#888;}
 
-#footer {text-align:center; font-size:0.8em; line-height:0.8em; padding-top:1em; padding-bottom:1em;}
+#footer {text-align:center; font-size:0.8em; line-height:0.8em; padding-top:1em; padding-bottom:1em; background-color:#eee; border-top:solid 1px #cecece}
 #footer p {margin:1em 0 1em 0}
 .footer-wrapper {background-color:#eee;}
 
@@ -55,9 +56,9 @@ div.content-strip {max-width: 960px; margin:0 auto;}
 
 #articles {}
 #articles ol {list-style-type:none; margin-left:0;}
-#articles li {width:100%; line-height:1.3em; padding-top:0.5em; padding-bottom: 0.5em; border-bottom:solid 1px #cecece;}
+#articles li {width:100%; line-height:1.3em; padding-top:0.5em; padding-bottom: 0.5em;}
 
-#pagination {padding-top:1em;}
+#pagination {padding-top:1em; border-top:1px solid #ccc;}
 
 
 /* Article Template */
