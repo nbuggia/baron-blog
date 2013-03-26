@@ -94,9 +94,11 @@ quotes (e.g. <code>title: "My article: Lots & Lots of Smiles"</code>)
 
 Sample article: 
 
+	---
 	title: The Road Not Taken
 	author: Robert Frost
-
+	---
+	
 	Two roads diverged in a yellow wood,<br/>
 	And sorry I could not travel both<br/>
 	And be one traveler, long I stood<br/>
@@ -263,6 +265,10 @@ think an interpreted language will make it much easier, right?
 * Document SEO tips & tricks
 * Add 'publish' task to the rake file
 * Add support for Author pages
+* Add a sitemap template
+* Render article attributes as content name/ value pairs in the header
+* Incorporate 'getting started' into the default content for the blog
+* Setup a sample blog on a custom domain, host on heroku.
 
 ##Namesake
 
