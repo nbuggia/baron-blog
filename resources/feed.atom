@@ -1,22 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-	<title><%= @config[:title] %></title>
-	<subtitle></subtitle>
-    <link href="<%= @config.get_feed_permalink %>" />
+	<title><%= @config[:title].encode(:xml => :text) %></title>
+    <link rel="self" href="<%= @config.get_feed_permalink %>" />
 	<updated><%= @articles.first.date_iso8601 %></updated>
 	<id><%= @config.get_feed_permalink %></id>
 
 	<% for @article in @articles %>
 		<entry>
-			<title><%= @article.title %></title>
+			<title><%= @article.title.encode(:xml => :text) %></title>
 			<link href="<%= @article.permalink %>" />
-			<category><%= @article.category %></category>
+			<category term="<%= @article.category %>" />
 			<author>
-				<name><%= @article.author %></name>
+				<name><%= @article.author.encode(:xml => :text) %></name>
 			</author>
 			<id><%= @article.permalink %></id>
 			<updated><%= @article.date_iso8601 %></updated>
-			<summary><%= @article.summary %></summary>
+			<content><%= @article.summary.encode(:xml => :text) %></content>
 		</entry>
 	<% end %>
 
