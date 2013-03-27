@@ -12,6 +12,8 @@
 	<script type="text/javascript" src="//use.typekit.net/xgg5zca.js"></script>
 	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 	
+	<link href="<%= @config.get_feed_permalink %>" type="application/atom+xml" rel="alternate" title="<%= @config[:title] %> Feed">
+	
 	<link href="<%= @theme.root %>/css/bootstrap.css" rel="stylesheet">
 	<link href="<%= @theme.root %>/css/theme.css" rel="stylesheet">
 	<link href="<%= @theme.root %>/css/bootstrap-responsive.css" rel="stylesheet">	

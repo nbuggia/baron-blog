@@ -7,15 +7,19 @@
 
 	<% for @article in @articles %>
 		<entry>
-			<title><%= @article.title.encode(:xml => :text) %></title>
+			<title type="html"><%= @article.title.encode(:xml => :text) %></title>
 			<link href="<%= @article.permalink %>" />
 			<category term="<%= @article.category %>" />
 			<author>
-				<name><%= @article.author.encode(:xml => :text) %></name>
+				<name type="html"><%= @article.author.encode(:xml => :text) %></name>
 			</author>
 			<id><%= @article.permalink %></id>
 			<updated><%= @article.date_iso8601 %></updated>
-			<content><%= @article.summary.encode(:xml => :text) %></content>
+			<summary type="html"><%= @article.summary.encode(:xml => :text) %></summary>
+
+			<% if @config[:feed_show_full_article] %>
+			<content type="html"><%= @article.body.encode(:xml => :text) %></content>
+			<% end %>
 		</entry>
 	<% end %>
 

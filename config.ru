@@ -34,7 +34,11 @@ baron = Baron::Server.new do
 
   # Specify how and if you would like the article date to be included in your 
   # permalink URL. 
-  # Options: :year_date, :year_month_date, :year_month_day_date, :no_date 
+  # Options:
+  #   :year_date                 /2013/my-article
+  #   :year_month_date           /2013/01/my-article
+  #   :year_month_day_date       /2013/01/31/my-article
+  #   :no_date                   /my-article
   set :permalink_date_format, :year_month_day_date
   
   # Specifies the maximum number of articles that will be show on the home page
@@ -45,8 +49,16 @@ baron = Baron::Server.new do
   # for example: http://www.nathanbuggia.com
   set :url, 'http://localhost:3000/'
 
+  # Specify how many articles you would like to return in your Atom feed
+  set :feed_max_articles, 10
+  
+  # Would you like to include the full article in the feed, or just the article
+  # summary? Options :true, :false
+  set :feed_show_full_article, :true 
+
   # specify your Disqus id to enable comments on your blog
   # format of "mysiteblog"
+  # http://www.disqus.com
   set :disqus_shortname, ''
 
   # specify your twitter id if you want to include 'follow me on twitter'
@@ -55,10 +67,12 @@ baron = Baron::Server.new do
 
   # specify your google analytics ID 
   # format of "UA-XXXXXX-X"
+  # http://www.google.com/analytics
   set :google_analytics, ''
 
   # specify your google webmaster key 
   # format: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  # http://www.google.com/webmasters
   set :google_webmaster, ''
 
   # You can add any value here like this:
@@ -71,7 +85,7 @@ end
 ###
 # Rack configuration
 
-# Rack will allow public access to these folders (and sub folders), though it 
+# Rack will allow public access to these folders (and sub-folders), though it 
 # will not support directory browsing. Add your own folders.
 use Rack::Static, :urls => ['/themes', '/downloads', '/images']
 
@@ -81,5 +95,5 @@ if ENV['RACK_ENV'] == 'development'
   use Rack::ShowExceptions
 end
 
-# RUN!
+# Run Baron, Run!
 run baron
