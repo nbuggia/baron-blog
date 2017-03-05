@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title><%= @params[:page_title] %></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<% if !@config[:google_webmaster].empty? %>
+	<meta name="google-site-verification" content="<%= @config[:google_webmaster] %>" />
+	<% end %>
+	
+	<script type="text/javascript" src="//use.typekit.net/xgg5zca.js"></script>
+	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+	
+	<link href="<%= @theme.root %>/css/bootstrap.css" rel="stylesheet">
+	<link href="<%= @theme.root %>/css/theme.css" rel="stylesheet">
+	<link href="<%= @theme.root %>/css/bootstrap-responsive.css" rel="stylesheet">	
+	
+	<!-- [if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	
+	<!-- Fav and touch icons -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="<%= @theme.root %>/img/apple-icon-144.png">
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="<%= @theme.root %>/img/apple-icon-114.png">
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="<%= @theme.root %>/img/apple-icon-72.png">
+	<link rel="apple-touch-icon-precomposed" sizes="57x57" href="<%= @theme.root %>/img/apple-icon-57.png">
+	<link rel="shortcut icon" href="/images/favicon.png">
+		
+</head>
+<body>
+	<!-- HEADER -->
+	<% if @params[:page_name] == @config[:root] %>
+	<div id="header" class="wrapper bluebg">
+		<div class="container-fluid content-strip">
+			<header>
+				<p id="header-image"><a class="logo" href="/"><img src="/images/instagram.png" /></a></p>
+				<p id="blog-title"><a href="/" class="blog-title nav"><%= @config[:title] %></a></p>
+			</header>
+		</div>
+	</div>
+	<% else %>
+	<div id="header" class="wrapper bluebg">
+		<div class="container-fluid content-strip">
+			<header>
+				<p id="header-image"><a href="/" class="logo" title="<%= @config[:title] %> <%= @config[:title_delimiter] %> home">
+					<img src="/images/instagram-small.png" /></a>
+				</p>
+			</header>
+		</div>
+	</div>
+	<% end %>
+		
+	<!-- MAIN CONTENT -->
+	<div id="content" class="wrapper bluebg">	
+		<div class="container-fluid content-strip">
+			<div class="row-fluid">			
+				<div class="posts">
+					<%= @content %> 
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- CATEGORIES -->
+	<div id="navigation" class="wrapper bluebg">
+		<div class="container-fluid content-strip">
+			<div class="row-fluid">
+				<div class="span3">
+					<h4>Pages</h4>
+					<ul>
+						<li><% if @params[:page_name] != @config[:root] %><a href="/">Home</a><% end %></li>
+						<li><a href="/about">About</a></li>
+						<li><a href="/archives">Archives</a></li>
+					</ul>
+				</div>
+				
+				<% if @categories %>
+				<div class="span3">
+					<h4>Categories</h4>
+					<section id="categories">
+						<ul>
+							<% for @category in @categories %>
+							<li>
+								<a href="<%= @category[:path] %>"><%= @category[:name] %> (<%= @category[:count] %>)</a>
+							</li>
+							<% end %>
+						</ul>
+					</section>
+				</div>
+				<% end %>
+						
+				<div class="span3">
+					<ul>
+						<li><a href="http://twitter.com/nathanbuggia">Twitter</a></li>
+						<li><a href="http://linkedin.com/in/nbuggia">LinkedIn</a></li>
+						<li><a href="https://github.com/nbuggia">GitHub</a></li>
+						<li><a href="http://slideshare.net/nbuggia">Slideshare</a></li>
+					</ul>
+				</div>
+				
+				<div class="span3">
+					<ul>
+						<li><a href="/feed.rss">RSS Feed</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+		
+	<!-- FOOTER -->
+	<div id="footer" class="wrapper bluebg">
+		<div class="container-fluid content-strip">
+			<footer class="row-fluid">
+				<p> &copy; 2001-<script>document.write(new Date().getFullYear());</script> &bull;
+					All rights reserved &bull;
+					Powered by <a class="nav" href="https://github.com/nbuggia/baron-blog-engine-gem">Baron Blog Engine</a></p>
+			</footer>
+		</div>
+	</div>
+	
+	<!-- SCRIPTS -->
+	<script src="http://code.jquery.com/jquery-1.8.2.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/js/image_alt.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/js/read_later.js" type="text/javascript" charset="utf-8"></script>
+	
+	<% if !@config[:google_analytics].empty? %>
+	<script type="text/javascript">
+
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', '<%= @config[:google_analytics] %>']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+
+	</script>
+	<% end %>
+</body>
+</html>

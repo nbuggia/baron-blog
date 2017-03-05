@@ -1,23 +1,19 @@
-#The Baron Blog
+#Baron Blog Engine Gem
 
-A full-featured, yet minimalist, blog engine for developers
+No one needs another blog engine. This is just a side project to play around
+with Ruby and a small web-based app. I wanted to create the simplest content 
+management engine that included all the features I was looking for to 
+power my blog. 
 
-I know what you're thinking, the world doesn't need another Ruby blog 
-engine. And, okay, you're right, however Baron is a little bit different in 
-that it is more full-featured, and still only a scant 400 lines of 
-easy-to-ready code.
+## Features
 
-**Features**
-* Publish to heroku (or similar PaaS) using Git
-* Author articles or custom pages in markdown or HTML
-* Article categories supported by simply putting articles in a folder
-* Many permalink formats are supported, including a custom prefix and several 
-date formats
-* 301 or 302 redirects are supported for easy porting from your current blog
-* SEO optimized with built-in support for Robots.txt, Google Analytics, Google 
-web master tools
+* Publish to Heroku (or similar) using Git
 * Easy to customize the look & feel via a common site layout template
-* Tech used: Rack, RSpec, Bootstrap, JQuery, HTML5, DISQUS
+* Author posts or custom pages in markdown or HTML
+* Organize content into categories
+* Several permalink formats are supported, including a custom prefix and several date formats
+* 301 or 302 redirects are supported for easy porting from your current blog
+* SEO optimized with built-in support for Robots.txt, Google Analytics, Google web master tools
 
 ##Quick Start
 
@@ -31,19 +27,12 @@ Dependencies: <a href="http://git-scm.com/">git</a>,
 	$ git push heroku master
 	$ heroku open
 
-Yay! Now you probably are going to want to customize this thing, read on for 
-all the bells and whistles.
-
 ##Customize Your Blog
 
 	$ less config.ru
 
-There are many bells and whistles available for your blog, most of them can be 
-set from inside <a href="https://github.com/nbuggia/baron-blog/blob/master/config.ru">config.ru</a>. 
+Most configuration can be adjusted in this file: <a href="https://github.com/nbuggia/baron-blog/blob/master/config.ru">config.ru</a>. 
 The file is well documented for all the options.
-
-The other big customization route is to hack the theme to either make your own,
-or to just modify it the way you'd like. 
 
 ###Creating Your Own Themes
 
@@ -54,18 +43,15 @@ I would recommend starting by forking this project and then duplicating one of
 the existing themes and modifying it.
 
 * Theme-specific configuration - Each theme has a theme_config.yml file where
-you can specify your own parameters and then access them from within the blog 
+you can specify your own parameters and then access them from within the templates 
 via <code>&lt;%= @theme[:foo_bar] %&gt;</code>
 * Each rendering template has access to all the varables documented in the 
 <code>/test/</code> page from your blog (unless you've deleted it).
 
-Just do a pull request if you would like your theme incorporated back into this 
-project.
-
 ##Create New Article
 
 	$ rake new
-	Title: My Blog Title
+	Title: Blog Title
 
 The easiest way to create a new article is to use the helper comand in the rake 
 file as show above. It will automatically create a new article for you with the 
@@ -116,7 +102,7 @@ all lower case, and use '-' instead of spaces to keep your URLs clean.
 
 ##Create A Custom Page
 
-You can also create custom pages that are accessible 1 level off your blog's 
+You can also create custom pages that are accessible one level off your blog's 
 root like /about, /contact-us or /project-foobar. Simply create a new file in
 the <code>/pages</code> folder with the following format:
 
@@ -145,20 +131,18 @@ Example Custom Page:
 		</p>	
 	</article>
 
-## Advanced Heroku Config
+## Heroku Config
 
 	$ git add .
 	$ git commit -m 'Publishing article: My article name'
 	$ git push heroku master
 
-Publish is super simple with git.
-
-Before you publish for realz, you should delete a few things:
+Before you publish, you should delete a few things:
 
 * ./pages/test.rhtml
 * ./images/baron-von-underbite.png
 
-###Adding a Custom Domain Name
+### Adding a Custom Domain Name
 
 From the Heroku Dashboard, go to the **Settings** section of the app you 
 created, and enter your domain in the **Domains** section. Always specify a 
@@ -184,7 +168,29 @@ version.
 Instructions for: <a href="http://support.godaddy.com/help/article/422/forwarding-or-masking-your-domain-name">GoDaddy</a>,
 <a href="http://www.namecheap.com/support/knowledgebase/article.aspx/385/77/how-do-i-set-up-url-forwarding-for-a-domain">NameCheap</a>, etc
 
-###Explore the Blog Structure
+## Redirects
+
+	$ less ./resources/redirects.txt
+
+Baron supports redirects to make it easy to migrate from another engine, and 
+so you can fix broken links or URL restructuring over time.
+
+This is what a Redirect looks like:
+
+	Redirect 301 /page/1 /
+
+Here's what the fields mean
+
+* **Redirect** - just indicates the start of the line, no other options 
+available at this time
+* **301** - this is the status code, 301 means permanent redirect. Check out 
+this article from Google covering all the possible codes and how you should use
+them: http://support.google.com/webmasters/bin/answer.py?hl=en&answer=40132
+* **/page/1** - specifies the source URL. This is the broken URL you are going 
+to redirect to somewhere else.
+* **/** - specifies the desitination URL. This is where you are redirecting to
+
+## Blog File Structure
 
 	├── Gemfile								List the dependencies for the blog
 	├── Gemfile.lock						Heroku uses this to install dependencies
@@ -210,73 +216,6 @@ Instructions for: <a href="http://support.godaddy.com/help/article/422/forwardin
 	        ├── img/
 	        ├── js/
 	        └── templates/					rhtml rendering templates for each page type
-
-## Redirects
-
-	$ less ./resources/redirects.txt
-
-Baron supports redirects to make it easy to migrate from another engine, and 
-so you can fix broken links or URL restructuring over time.
-
-This is what a Redirect looks like:
-
-	Redirect 301 /page/1 /
-
-Here's what the fields mean
-
-* **Redirect** - just indicates the start of the line, no other options 
-available at this time
-* **301** - this is the status code, 301 means permanent redirect. Check out 
-this article from Google covering all the possible codes and how you should use
-them: http://support.google.com/webmasters/bin/answer.py?hl=en&answer=40132
-* **/page/1** - specifies the source URL. This is the broken URL you are going 
-to redirect to somewhere else.
-* **/** - specifies the desitination URL. This is where you are redirecting to
-
-Unfortunatley, it don't support regular expressions in the redirects yet :(
-
-##Next Steps
-
-I wrote this as an excuse to learn a handful of new technologies and approaches, 
-like Ruby and TDD. There are an ambitious set of features I'd like to add that 
-each align to something else I would like to learn:
-
-* Themes - I'm designing 3-4 fancy, shmancy themes to try out this new 'flat'
-and minimalist thing everyone's excited about. Also a good excuse to dig into
-HTML5, CSS3, JQuery, Instagram's API and a few other things.
-
-* Pre-rendering - the platform nerd in me doesn't understand why the whole 
-blog isn't pre-rendered at deploy time so heroku just serves static HTML and
-assets (a la <a href="https://github.com/mojombo/jekyll">Jekyll</a>)
-
-* JavaScript Comments - the blog engine currently uses Disqus for comments,
-which is free and cool, but I hate letting other people own my data. I want 
-to build something similar to Disqus on top of 
-<a href="https://www.parse.com/">Parse</a> / 
-<a href="https://github.com/documentcloud/backbone">Backbone</a> and make it 
-really easy to use
-
-* Simple Plugin Model - I've always wanted to write a plug-in model. I tried
-to write one in C++ in college and was only able to do static linking (lame). I
-think an interpreted language will make it much easier, right?
-
-##TODO
-
-* Document SEO tips & tricks
-* Add 'publish' task to the rake file
-* Add support for Author pages
-* Add a sitemap template
-* Render article attributes as content name/ value pairs in the header
-* Incorporate 'getting started' into the default content for the blog
-* Setup a sample blog on a custom domain, host on heroku.
-
-##Namesake
-
-This project was named after the adorable baron von underbite of Seattle 
-Greenlake fame: 
-
-<img alt="pictures of baron von underbite" src="images/baron-von-underbite.png" />
-
 ##Thanks
 
 While writing this blog engine, I barrowed a lot of code and design approaches
@@ -284,8 +223,7 @@ from the Toto project by Cloudhead and the Scanty project by Adam Wiggins. The
 primary purpose of this project was a learning one for me, and both of these
 folks provided a lot of good code an examples. I'm not sure how much code or 
 design awesomeness one needs to use before they are obligated to include their 
-license, so I'm included a link to each of them just in case (and thank you 
-both for your awesomeness!)
+license, so I'm included a link to each of them just in case.
 
 Toto
  - URL: https://github.com/cloudhead/toto

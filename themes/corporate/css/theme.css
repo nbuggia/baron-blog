@@ -1,4 +1,4 @@
-body {font-family:"source-sans-pro", sans-serif; font-size: 18px; line-height:1.8em; color:#444;}
+body {font-family:"source-sans-pro", sans-serif; font-size: 18px; line-height:1.5em; color:#444;}
 h1, h2, h3 {font-family:"museo-sans", sans-serif; padding-top:0; margin-top:0;}
 h1 {font-size:2.6em; line-height:1.3em; color:#444;}
 h2 {color: #444; font-size: 1.8em;}
@@ -46,7 +46,7 @@ div.content-strip {max-width: 960px; margin:0 auto;}
 #navigation ul, #sidebar ul {list-style-type:none; margin-left:0;}
 #navigation li, #sidebar li {padding-top:0.3em; padding-bottom: 0.3em;}
 
-#sidebar p {line-height:1.4em; color:#888;}
+#sidebar p {line-height:1.5em; color:#888;}
 
 #footer {text-align:center; font-size:0.8em; line-height:0.8em; padding-top:1em; padding-bottom:1em; background-color:#eee; border-top:solid 1px #cecece}
 #footer p {margin:1em 0 1em 0}
@@ -56,7 +56,7 @@ div.content-strip {max-width: 960px; margin:0 auto;}
 
 #articles {}
 #articles ol {list-style-type:none; margin-left:0;}
-#articles li {width:100%; line-height:1.3em; padding-top:0.5em; padding-bottom: 0.5em;}
+#articles li {width:100%; line-height:1.5em; padding-top:0.5em; padding-bottom: 0.5em;}
 
 #pagination {padding-top:1em; border-top:1px solid #ccc;}
 

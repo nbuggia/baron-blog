@@ -1,0 +1,14 @@
+<header>
+	<h1><%= @article.title %></h1>
+</header>
+
+<article>
+	<section class="post-details">
+		<time><%= @article.date %></time> &bull; 
+		<!-- <a href="<%= @article.path %>">Permalink</a> &bull; -->
+		<a href="javascript:void(0)" onclick="read_later('<%= @article.path %>');">Read Later</a>
+	</section>
+	<section>
+		<%= @article.body %>
+	</section>
+</article>
